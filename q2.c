@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include "tm4c123gh6pm.h"
 
+
+//UART 0 is used for debugging
+
 #define SYSCLK        16000000
 #define CMD_BUF_SIZE  32
 

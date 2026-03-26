@@ -1,6 +1,4 @@
-/* Read data from UART0 and display it at the tri-color LEDs. The LEDs are
-connected to Port F 3-1. Press any A-z, a-z, 0-9 key at the terminal emulator
-and see ASCII value in binary is displayed on LEDs of PORTF. */
+
 #include "tm4c123gh6pm.h"
 #include<stdio.h>
 void delayMs(int n);

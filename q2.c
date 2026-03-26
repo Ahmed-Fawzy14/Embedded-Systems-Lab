@@ -60,9 +60,9 @@ int main(void)
     GPIOA->PCTL  |=  0x00000011; /* configure PA0 and PA1 for UART */
 
     /* UART5 initialization, enabling RX interrupt */
-    SYSCTL->RCGCUART |= (1U << 5); /* provide clock to UART5 */
-    SYSCTL->RCGCGPIO |= (1U << 4); /* enable clock to PORTE */
-    while((SYSCTL->PRGPIO & (1U << 4)) == 0) {} /* wait until PORTE is ready */
+    SYSCTL->RCGCUART |= (1 << 5); /* provide clock to UART5 */
+    SYSCTL->RCGCGPIO |= (1 << 4); /* enable clock to PORTE */
+    while((SYSCTL->PRGPIO & (1 << 4)) == 0) {} /* wait until PORTE is ready */
 
     UART5->CTL = 0; /* disable UART5 */
     UART5->IBRD = 104; /* 16MHz/(16*9600 baud rate) = 104.1666666666 */
@@ -82,7 +82,7 @@ int main(void)
 
     /* enable UART5 interrupt in NVIC and set priority to 3 */
     NVIC->IP[61] = 3 << 5; /* set interrupt no 61 priority to 3 */
-    NVIC->ISER[1] |= (1U << (61 - 32)); /* enable IRQ61 for UART5 */
+    NVIC->ISER[1] |= (1 << (61 - 32)); /* enable IRQ61 for UART5 */
 
     /* SysTick initialization */
     SysTick->CTRL = 0; /* disable SysTick during setup */
@@ -142,13 +142,13 @@ void SysTick_LoadNext(void)
 
     ticks = (uint32_t)(phaseSec * (float)SYSCLK);
 
-    if (ticks < 1U)
-        ticks = 1U;
+    if (ticks < 1)
+        ticks = 1;
 
-    if (ticks > 16777215U)
-        ticks = 16777215U;                 
+    if (ticks > 16777215)
+        ticks = 16777215;                 
 
-    SysTick->LOAD = ticks - 1U;
+    SysTick->LOAD = ticks - 1;
     SysTick->VAL = 0;
 }
 

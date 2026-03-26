@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "tm4c123gh6pm.h"
 
-#define SYSCLK        16000000UL
+#define SYSCLK        16000000
 #define CMD_BUF_SIZE  32
 
 volatile char cmdBuffer[CMD_BUF_SIZE];
